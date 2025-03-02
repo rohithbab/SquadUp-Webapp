@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-gradient {
+    animation: gradient 8s linear infinite;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 228 50% 4%;
+    --foreground: 228 30% 98%;
+    
+    /* Neon Tech theme colors */
+    --primary: 180 100% 50%;
+    --primary-foreground: 228 30% 98%;
+    
+    --secondary: 280 75% 65%;
+    --secondary-foreground: 228 30% 98%;
+    
+    --accent: 300 100% 50%;
+    --accent-foreground: 228 30% 98%;
+    
+    --card: 228 45% 8%;
+    --card-foreground: 228 30% 98%;
+    
+    --popover: 228 45% 8%;
+    --popover-foreground: 228 30% 98%;
+    
+    --muted: 228 45% 12%;
+    --muted-foreground: 228 30% 70%;
+    
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 228 30% 98%;
+    
+    --border: 180 100% 50%;
+    --input: 180 100% 50%;
+    --ring: 180 100% 50%;
+    
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: 
+      linear-gradient(to right, rgba(0, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-card rounded-lg p-6 border border-cyan-500/20 transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply border-cyan-500/40 shadow-[0_0_20px_rgba(0,255,255,0.15)];
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+  }
+
+  .btn-primary {
+    @apply bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(0,255,255,0.3)];
+  }
+
+  .btn-secondary {
+    @apply bg-purple-500/10 text-purple-400 border border-purple-500/30 hover:bg-purple-500/20 hover:border-purple-500/50 hover:shadow-[0_0_15px_rgba(138,43,226,0.3)];
+  }
+
+  .input {
+    @apply flex h-12 w-full rounded-lg border border-cyan-500/30 bg-card px-4 py-2 text-sm transition-all duration-300 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-cyan-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50 focus-visible:border-cyan-500/50 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .neon-border {
+    @apply border border-cyan-500/30 hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(0,255,255,0.2)] transition-all duration-300;
+  }
+
+  .neon-text {
+    @apply bg-gradient-to-r from-cyan-400 via-purple-400 to-fuchsia-400 bg-clip-text text-transparent animate-gradient bg-[length:200%_200%];
+  }
+
+  .neon-highlight {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-cyan-500 after:transition-transform after:duration-300 hover:after:origin-bottom-left hover:after:scale-x-100;
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+} 
